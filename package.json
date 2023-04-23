@@ -1,0 +1,13 @@
+{
+  "name": "file-meneger",
+  "version": "1.0.0",
+  "description": "File manager",
+  "main": "main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "echo \"Test command\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
