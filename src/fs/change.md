@@ -1,2 +1,0 @@
-lrealkncad
-saloms

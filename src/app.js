@@ -2,6 +2,8 @@ const username = process.argv.slice(2).join("").slice(11);
 
 const userKeyword = process.argv.slice(2).join("").slice(0, 10);
 
+console.log("\nYou are currently in ", `${process.cwd()}`);
+
 if (userKeyword !== "--username"){
     process.stdout.write("Enter data error! data must be --username=name");
     process.exit(1);

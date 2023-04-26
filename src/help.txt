@@ -1,0 +1,14 @@
+Bu loyiha terminalga o'xshagan loyihacha
+
+Commands
+    fs Commands
+        - cd - change directory
+        - add - new file add
+        - create - new folder create
+        - cat - view any file inside
+        - ls - view current directory list
+        - rm - remove file
+        - mv - move to file
+        - rn - file or folder rename
+    os Commands
+        - cpu - view cpu core
