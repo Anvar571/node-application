@@ -11,10 +11,14 @@ class CdClone {
     }
 
     #runCode() {
+        try {
 
-        process.chdir(this.#filepath[1]);
+            process.chdir(this.#filepath[1]);
 
-        console.log("\nYou are currently in ", `${process.cwd()}`);
+            console.log("\nYou are currently in ", `${process.cwd()}`);
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
     #checkfile() {
@@ -23,20 +27,17 @@ class CdClone {
                 throw new Error("filepath must be in the cd command")
             }
         } catch (error) {
-            console.log("Error cd command: ", error.message);
-            process.exit(1);
+            console.log(error.message);
         }
     }
 
-    #checkArg(){
+    #checkArg() {
         try {
             if (this.#filepath.length > 2) {
                 console.log("Too many args for cd command!");
-                process.exit(1);
             }
         } catch (error) {
-            console.log("Error cd command: ", error.message);
-            process.exit(1);
+            console.log(error.message);
         }
     }
 }

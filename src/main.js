@@ -1,6 +1,10 @@
 const Touch = require("./fs/add");
 const CdClone = require("./fs/cd");
-const fs = require("fs");
+const viewPath = require("./fs/ls");
+const CatClone = require("./fs/cat");
+const helpF = require("./addation/help");
+const clearF = require("./addation/clear");
+const mkDirClone = require("./fs/kmdir");
 
 require("./app");
 
@@ -21,46 +25,21 @@ process.stdin.on("data", (input) => {
         new CdClone(command);
 
     } else if (command[0] == "add") {
-        new Touch(command[1])
-
+        new Touch(command)
 
     } else if (command[0] == "ls") {
-        const files = fs.readdirSync(process.cwd());
-
-        // Convert the array of filenames to an array of objects with a 'name' property
-        const fileObjects = files.map(file => {
-            const stats = fs.statSync(file);
-            const fileType = stats.isDirectory() ? 'folder' : 'file';
-
-            const currentDate = new Date();
-            const dateString = currentDate.toLocaleDateString();
-            const timeString = currentDate.toLocaleTimeString(stats.birthtime);
-            const dateTimeString = `${dateString} ${timeString}`;
-
-            return { name: file, Type: fileType};
-        });
-
-        console.table(fileObjects);
+        viewPath();
 
     } else if (command[0] == "cat") {
+        new CatClone(command);
 
     } else if (command[0] == "clear") {
-        console.clear();
+        clearF()
 
     } else if (command[0] == "help") {
-        try {
-            const path = "./help.txt";
-            if (!fs.existsSync(path)) throw new Error("This file dir is not defined");
-
-            fs.readFile(path, "utf-8", (err, data) => {
-                if (err) {
-                    return console.log(err.message);
-                }
-                console.log(data.toString());
-            })
-        } catch (error) {
-            console.log(error.message);
-        }
+        helpF()
+    }else if (command[0] == "mkdir"){
+        new mkDirClone(command)
     }
     else {
         console.log("This command was not found");
