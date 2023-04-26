@@ -1,3 +1,3 @@
 # node-application
 
-File manager
+Build own terminal in nodejs
