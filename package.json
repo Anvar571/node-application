@@ -4,7 +4,7 @@
   "description": "File manager",
   "main": "main.js",
   "scripts": {
-    "start": "node src/main.js",
+    "start": "node --watch src/main.js",
     "test": "echo \"Test command\" && exit 1"
   },
   "keywords": [],
