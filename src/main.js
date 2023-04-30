@@ -1,10 +1,8 @@
-const Touch = require("./fs/add");
-const CdClone = require("./fs/cd");
-const viewPath = require("./fs/ls");
-const CatClone = require("./fs/cat");
-const helpF = require("./addation/help");
-const clearF = require("./addation/clear");
-const mkDirClone = require("./fs/kmdir");
+const OsCommands = require("./os/main");
+const FsCommand = require("./fs");
+const HashFuntion = require("./hash/hash");
+const compress = require("./zlip/compress");
+const decompress = require("./zlip/decompress");
 
 require("./app");
 
@@ -15,36 +13,28 @@ process.stdin.on("data", (input) => {
     input = input.toString().trim();
 
     let command = input.toString().split(" ");
-
+    
     if (input == ".exit") {
         console.log(`Thank you for using File Manager, ${username}, goodbye!`);
         process.exit(1);
     }
 
-    if (command[0] == "cd") {
-        new CdClone(command);
-
-    } else if (command[0] == "add") {
-        new Touch(command)
-
-    } else if (command[0] == "ls") {
-        viewPath();
-
-    } else if (command[0] == "cat") {
-        new CatClone(command);
-
-    } else if (command[0] == "clear") {
-        clearF()
-
-    } else if (command[0] == "help") {
-        helpF()
-    }else if (command[0] == "mkdir"){
-        new mkDirClone(command)
+    if (command[0] == "os"){
+        OsCommands(command);
+    } else if (command[0] == "hash"){
+        HashFuntion(process.cwd() + "/src/test.txt")
+    } else if (command[0] == "compress"){
+        compress(command[1], command[2]);
+    }
+    else if (command[0] == "decompress"){
+        decompress(command[1], command[2])
+    }
+    else if (command){
+        FsCommand(command);
     }
     else {
         console.log("This command was not found");
     }
-
 })
 
 process.on("SIGINT", () => {
