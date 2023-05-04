@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const OsCommands = require("./os/main");
 const FsCommand = require("./fs");
 const HashFuntion = require("./hash/hash");
@@ -38,6 +40,6 @@ process.stdin.on("data", (input) => {
 })
 
 process.on("SIGINT", () => {
-    console.log(`\nThank you for using File Manager, ${username}, goodbye!`);
+    console.log(`\nThank you for using File Manager, ${username}, goodbye! paka`);
     process.exit(1);
 })
